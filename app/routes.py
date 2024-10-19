@@ -1,10 +1,8 @@
-from flask import Blueprint
-from app import app
-import os
+from flask import Blueprint, current_app
 
-# Criando um Blueprint
 user_routes = Blueprint('user_routes', __name__)
 
+
 @user_routes.route('/')
-def home():
+def users():
     return "Hello, World!"

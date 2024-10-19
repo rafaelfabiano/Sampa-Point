@@ -1,17 +1,25 @@
-# Importar a biblioteca Flask
+import sys
+import os
 from flask import Flask
-# Importando o Blueprint para as rotas de usuários
-from routes import user_routes
 
-# Inicializar a aplicação Flask
-app = Flask(__name__)
+# Adiciona o diretório raiz do projeto ao PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Importando o Blueprint para as rotas de usuários
-from routes import user_routes  # Certifique-se de que 'routes.py' está funcionando corretamente
+# garantir que o diretório atual (/app) seja incluído no PYTHONPATH dentro do container.
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Registrando o Blueprint
-app.register_blueprint(user_routes)
+def create_app():
+    # Inicializar a aplicação Flask
+    app = Flask(__name__)
 
-# Executar a aplicação
-if __name__ == '__main__':
-    app.run(debug=True)
+    # Importando o Blueprint para as rotas de usuários
+    from routes import user_routes
+
+    # Registrando o Blueprint
+    app.register_blueprint(user_routes)
+
+    return app
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
