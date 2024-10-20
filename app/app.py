@@ -1,6 +1,6 @@
 import sys
 import os
-from flask import Flask
+from flask import Flask, render_template
 from routes import user_routes  # Importar o Blueprint
 
 
@@ -13,6 +13,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 def create_app():
     # Inicializar a aplicação Flask
     app = Flask(__name__)
+
+    @app.route('/')
+    def inicio():
+        return render_template('inicio.html')
 
     # Registrando o Blueprint
     app.register_blueprint(user_routes)
