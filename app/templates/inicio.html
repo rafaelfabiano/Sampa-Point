@@ -11,27 +11,32 @@
 </head>
 
 <body>
-    <div class=e5_8>
-        <div class="e7_19"></div>
-        <div class="e7_21"></div>
-        <div class="e7_24"></div>
-        <div class="e17_8"></div><span class="e14_2">Login</span><span class="e14_3">Cadastro</span><span
-            class="e54_39">Saia da rotina!
-
-            Venha explorar São Paulo de uma forma divertida.</span>
-        <div class="e58_33"></div>
+    <div class="InCio" style="width: 412px; height: 917px; position: relative; background: white">
+        <img class="C326d81659490b8b636a4e6064d4cf1"
+            style="width: 419px; height: 535px; left: -4px; top: -67px; position: absolute"
+            src="https://via.placeholder.com/419x535" />
+        <div class="Rectangle3"
+            style="width: 333px; height: 66px; left: 51px; top: 701px; position: absolute; background: #FE0000; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 22px">
+        </div>
+        <div class="Rectangle4"
+            style="width: 333px; height: 66px; left: 51px; top: 800px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 22px">
+        </div>
+        <div class="Login"
+            style="left: 161px; top: 710px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.20); font-size: 40px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">
+            Login</div>
+        <div class="Cadastro"
+            style="left: 128px; top: 809px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.20); font-size: 40px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">
+            Cadastro</div>
+        <div class="SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida"
+            style="width: 374px; height: 224px; left: 19px; top: 416px; position: absolute; text-align: center"><span
+                style="color: black; font-size: 36px; font-family: Roboto; font-weight: 400; line-height: 44px; word-wrap: break-word">Saia
+                da rotina!<br /></span><span
+                style="color: black; font-size: 22px; font-family: Roboto; font-weight: 400; line-height: 28px; word-wrap: break-word"><br />Venha
+                explorar São Paulo de uma forma divertida.</span></div>
+        <div class="Line1"
+            style="width: 230px; height: 0px; left: 91px; top: 508.50px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 3px #FE0000 solid">
+        </div>
     </div>
-
-    <!-- Mensagens flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <ul>
-        {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
 </body>
 
 </html>
