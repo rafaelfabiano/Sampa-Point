@@ -1,13 +1,12 @@
-</html>
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     <link href="{{ url_for('static', filename='css/inicio.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +20,6 @@
         </div>
         <div class="Rectangle3">Login</div>
         <div class="Rectangle4">Cadastro</div>
-
     </div>
 
     <style>
@@ -34,60 +32,43 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            /* Fundo da página */
             display: flex;
             justify-content: center;
-            /* Centraliza horizontalmente */
             align-items: center;
-            /* Centraliza verticalmente */
             min-height: 100vh;
-            /* Preenche a altura da tela */
+            overflow: hidden; /* Evita scroll */
         }
 
         .InCio {
             width: 100%;
             max-width: 412px;
-            /* Largura máxima */
             margin: 0 auto;
-            /* Centraliza o contêiner */
             background: white;
             position: relative;
             overflow: hidden;
-            /* Para evitar elementos saindo do contêiner */
             padding: 20px;
-            /* Adiciona espaçamento interno */
             border-radius: 15px;
-            /* Arredonda os cantos */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Sombra suave */
         }
 
         img {
             width: 100%;
-            /* Imagem responsiva */
             height: auto;
-            /* Mantém a proporção */
             display: block;
-            /* Remove o espaço abaixo da imagem */
             border-radius: 15px;
-            /* Arredonda os cantos da imagem */
         }
 
         .Rectangle3,
         .Rectangle4 {
             width: 100%;
-            /* Largura total do contêiner */
             height: 66px;
             margin: 10px 0;
-            /* Espaçamento vertical */
             border-radius: 22px;
             display: flex;
-            /* Flexbox para centralizar texto */
             align-items: center;
             justify-content: center;
             color: rgba(0, 0, 0, 0.20);
             font-size: 24px;
-            /* Tamanho da fonte */
             font-family: Montserrat;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
@@ -102,58 +83,41 @@
 
         .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida {
             width: 100%;
-            /* Largura total do contêiner */
             margin: 20px 0;
-            /* Espaçamento vertical */
             text-align: center;
         }
 
         .Line1 {
             width: 90%;
-            /* Largura relativa */
             height: 3px;
-            /* Altura da linha */
             background: #FE0000;
-            /* Cor da linha */
             margin: 20px auto;
-            /* Centraliza e espaçamento */
         }
 
         @media (max-width: 768px) {
-
             .Rectangle3,
             .Rectangle4 {
                 font-size: 20px;
-                /* Tamanho da fonte para mobile */
                 height: 50px;
-                /* Altura reduzida */
             }
 
             .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
                 font-size: 18px;
-                /* Tamanho da fonte reduzido */
             }
         }
 
         @media (max-width: 480px) {
-
             .Rectangle3,
             .Rectangle4 {
                 font-size: 18px;
-                /* Ajuste adicional para telas pequenas */
                 height: 45px;
-                /* Altura reduzida */
             }
 
             .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
                 font-size: 16px;
-                /* Tamanho da fonte reduzido */
             }
         }
     </style>
-
-
-    </div>
 </body>
 
 </html>
