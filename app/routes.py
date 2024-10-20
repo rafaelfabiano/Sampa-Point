@@ -396,6 +396,10 @@ def dashboard():
 def selos():
     return render_template("selos.html",)
 
+@user_routes.route("/sucesso")
+def sucesso():
+    return render_template("sucesso.html",)
+
 @user_routes.route("/link_create_user")
 def link_create_user():
     return render_template("create_user.html",)
