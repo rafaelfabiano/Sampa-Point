@@ -1,6 +1,8 @@
 import sys
 import os
 from flask import Flask
+from routes import user_routes  # Importar o Blueprint
+
 
 # Adiciona o diretório raiz do projeto ao PYTHONPATH
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -12,9 +14,6 @@ def create_app():
     # Inicializar a aplicação Flask
     app = Flask(__name__)
 
-    # Importando o Blueprint para as rotas de usuários
-    from routes import user_routes
-
     # Registrando o Blueprint
     app.register_blueprint(user_routes)
 
@@ -22,4 +21,4 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.run()
+    app.run(debug=True)
