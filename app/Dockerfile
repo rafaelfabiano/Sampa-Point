@@ -1,5 +1,6 @@
 # Usar uma imagem base oficial do Python
-FROM python:3.9-slim
+FROM python:3.11.9-slim
+
 
 # Definir o diretório de trabalho no contêiner
 WORKDIR /app
@@ -16,5 +17,5 @@ COPY . .
 # Expor a porta em que a aplicação irá rodar
 EXPOSE 5000
 
-# Comando para rodar a aplicação
-CMD ["python", "app.py"]
+# Comando para rodar a aplicação 
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
