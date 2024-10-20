@@ -9,6 +9,7 @@ app = Flask(__name__)
 # def inicio():
 #     return render_template('inicio.html')
 
+
 @user_routes.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
