@@ -5,8 +5,8 @@ user_routes = Blueprint('user_routes', __name__)
 app = Flask(__name__)
 
 
-@user_routes.route('/')
-def users():
+@user_routes.route('/inicio')
+def inicio():
     return render_template('inicio.html')
 
 @user_routes.route('/cadastro')
