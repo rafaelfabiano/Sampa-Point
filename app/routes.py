@@ -224,11 +224,22 @@ def get_user(user_id):
             flash('Usuário não encontrado.', 'error')
             return redirect(url_for('user_routes.list_users'))
 
-        # Retornar o template com os detalhes do usuário
-        return render_template('user_detail.html', user=user)  # Alterar para um template apropriado
+        # Obter a lista de IDs de pontos do checklist do usuário
+        checklist_ids = user.get('checklist', [])
+
+        # Consultar os pontos correspondentes aos IDs
+        points = []
+        for point_id in checklist_ids:
+            point = get_point_by_id(point_id)  # Função que busca o ponto pelo ID
+            if point:
+                points.append(point)
+
+        # Retornar o template com os detalhes do usuário e a lista de pontos
+        return render_template('user_detail.html', user=user, points=points)
     except Exception as e:
         flash(f'Erro ao carregar o usuário: {str(e)}', 'error')
         return redirect(url_for('user_routes.list_users'))
+
 
 @user_routes.route('/perfil/<user_id>', methods=['GET'])
 def perfil(user_id):
