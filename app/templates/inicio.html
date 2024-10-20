@@ -11,31 +11,148 @@
 </head>
 
 <body>
-    <div class="InCio" style="width: 412px; height: 917px; position: relative; background: white">
-        <img class="C326d81659490b8b636a4e6064d4cf1"
-            style="width: 419px; height: 535px; left: -4px; top: -67px; position: absolute"
-            src="https://via.placeholder.com/419x535" />
-        <div class="Rectangle3"
-            style="width: 333px; height: 66px; left: 51px; top: 701px; position: absolute; background: #FE0000; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 22px">
+    <div class="InCio">
+        <img class="C326d81659490b8b636a4e6064d4cf1" src="https://via.placeholder.com/419x535"
+            alt="Imagem de exemplo" />
+        <div class="SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida">
+            <h1>Saia da rotina!<br /></h1>
+            <div class="Line1"></div>
+            <span>Venha explorar São Paulo de uma forma divertida.</span>
         </div>
-        <div class="Rectangle4"
-            style="width: 333px; height: 66px; left: 51px; top: 800px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 22px">
-        </div>
-        <div class="Login"
-            style="left: 161px; top: 710px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.20); font-size: 40px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">
-            Login</div>
-        <div class="Cadastro"
-            style="left: 128px; top: 809px; position: absolute; text-align: center; color: rgba(0, 0, 0, 0.20); font-size: 40px; font-family: Montserrat; font-weight: 400; word-wrap: break-word">
-            Cadastro</div>
-        <div class="SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida"
-            style="width: 374px; height: 224px; left: 19px; top: 416px; position: absolute; text-align: center"><span
-                style="color: black; font-size: 36px; font-family: Roboto; font-weight: 400; line-height: 44px; word-wrap: break-word">Saia
-                da rotina!<br /></span><span
-                style="color: black; font-size: 22px; font-family: Roboto; font-weight: 400; line-height: 28px; word-wrap: break-word"><br />Venha
-                explorar São Paulo de uma forma divertida.</span></div>
-        <div class="Line1"
-            style="width: 230px; height: 0px; left: 91px; top: 508.50px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 3px #FE0000 solid">
-        </div>
+        <div class="Rectangle3">Login</div>
+        <div class="Rectangle4">Cadastro</div>
+
+    </div>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Fundo da página */
+            display: flex;
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+            min-height: 100vh;
+            /* Preenche a altura da tela */
+        }
+
+        .InCio {
+            width: 100%;
+            max-width: 412px;
+            /* Largura máxima */
+            margin: 0 auto;
+            /* Centraliza o contêiner */
+            background: white;
+            position: relative;
+            overflow: hidden;
+            /* Para evitar elementos saindo do contêiner */
+            padding: 20px;
+            /* Adiciona espaçamento interno */
+            border-radius: 15px;
+            /* Arredonda os cantos */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+        }
+
+        img {
+            width: 100%;
+            /* Imagem responsiva */
+            height: auto;
+            /* Mantém a proporção */
+            display: block;
+            /* Remove o espaço abaixo da imagem */
+            border-radius: 15px;
+            /* Arredonda os cantos da imagem */
+        }
+
+        .Rectangle3,
+        .Rectangle4 {
+            width: 100%;
+            /* Largura total do contêiner */
+            height: 66px;
+            margin: 10px 0;
+            /* Espaçamento vertical */
+            border-radius: 22px;
+            display: flex;
+            /* Flexbox para centralizar texto */
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.20);
+            font-size: 24px;
+            /* Tamanho da fonte */
+            font-family: Montserrat;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .Rectangle3 {
+            background: #FE0000;
+        }
+
+        .Rectangle4 {
+            background: black;
+        }
+
+        .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida {
+            width: 100%;
+            /* Largura total do contêiner */
+            margin: 20px 0;
+            /* Espaçamento vertical */
+            text-align: center;
+        }
+
+        .Line1 {
+            width: 90%;
+            /* Largura relativa */
+            height: 3px;
+            /* Altura da linha */
+            background: #FE0000;
+            /* Cor da linha */
+            margin: 20px auto;
+            /* Centraliza e espaçamento */
+        }
+
+        @media (max-width: 768px) {
+
+            .Rectangle3,
+            .Rectangle4 {
+                font-size: 20px;
+                /* Tamanho da fonte para mobile */
+                height: 50px;
+                /* Altura reduzida */
+            }
+
+            .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
+                font-size: 18px;
+                /* Tamanho da fonte reduzido */
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .Rectangle3,
+            .Rectangle4 {
+                font-size: 18px;
+                /* Ajuste adicional para telas pequenas */
+                height: 45px;
+                /* Altura reduzida */
+            }
+
+            .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
+                font-size: 16px;
+                /* Tamanho da fonte reduzido */
+            }
+        }
+    </style>
+
+
     </div>
 </body>
 
