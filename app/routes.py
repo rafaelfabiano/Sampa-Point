@@ -257,67 +257,77 @@ def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
         return redirect(url_for('user_routes.list_users'))
 
 
-@user_routes.route('/update_user_qr/<user_id>/<point_id>', methods=['GET', 'POST'])
+@user_routes.route('/update_user_qr/<user_id>/<point_id>', methods=['GET'])
 def update_user_qr(user_id, point_id):
     try:
         # Utilizando função do CRUD para buscar o usuário e o ponto
         user = get_user_by_id(user_id)
         point = get_point_by_id(point_id)
-        
+
         if not user:
             flash('Usuário não encontrado.', 'error')
             return redirect(url_for('user_routes.login'))
-        
+
         if not point:
             flash('Ponto não encontrado.', 'error')
             return redirect(url_for('user_routes.login'))
 
-        if request.method == 'GET':
-            return render_template('edit_user.html', user=user, point=point)
+        # Obtém os dados da query string
+        password = request.args.get('password', None)
+        first_name = request.args.get('first_name')
+        nascimento = request.args.get('nascimento')
+        celular = request.args.get('celular')
+        bairro = request.args.get('bairro')
+        cidade = request.args.get('cidade')
 
-        elif request.method == 'POST':
-            password = request.form.get('password', None)
-            first_name = request.form['first_name']
-            nascimento = request.form['nascimento']
-            celular = request.form['celular']
-            bairro = request.form['bairro']
-            cidade = request.form['cidade']
+        # Carrega as preferências existentes do usuário
+        preferencias = user.get('preferencias', {
+            "cultural": 0,
+            "gastronomico": 0,
+            "negocios": 0,
+            "compras": 0,
+            "aventura": 0,
+            "religioso": 0,
+            "eventos": 0,
+            "historico": 0
+        })
 
-            # Atualiza as preferências do usuário com base na categoria do ponto
-            preferencias = {
-                "cultural": 0,
-                "gastronomico": 0,
-                "negocios": 0,
-                "compras": 0,
-                "aventura": 0,
-                "religioso": 0,
-                "eventos": 0,
-                "historico": 0
-            }
+        # Verifica se 'point' e 'categoria' estão definidos
+        categoria = point.get('categoria')
+        if categoria in preferencias:
+            preferencias[categoria] += 1
+            print(f"Preferências atualizadas: {preferencias}")
 
-            if point['categoria'] in preferencias:
-                preferencias[point['categoria']] += 1
+        # Obter o checklist atual
+        checklist_atual = user.get('checklist', [])
 
-            update_fields = {
-                "password_hash": password,
-                "first_name": first_name,
-                "data_nascimento": nascimento,
-                "celular": celular,
-                "bairro": bairro,
-                "cidade": cidade,
-                "selos": [],
-                "checklist": [],
-                "preferencias": preferencias
-            }
+        # Verificar se point_id já está no checklist
+        if point_id not in checklist_atual:
+            checklist_atual.append(point_id)
 
-            update_user(user['_id'], update_fields)
+        # Atualizar os campos
+        update_fields = {
+            "password_hash": password,
+            "first_name": first_name,
+            "data_nascimento": nascimento,
+            "celular": celular,
+            "bairro": bairro,
+            "cidade": cidade,
+            "selos": [],
+            "checklist": checklist_atual,
+            "preferencias": preferencias
+        }
+        print(f"Campos atualizados: {update_fields}")
+        update_user(user['_id'], update_fields)
 
-            flash('Usuário atualizado com sucesso!', 'success')
-            return redirect(url_for('user_routes.dashboard'))
+        flash('Usuário atualizado com sucesso!', 'success')
+        return redirect(url_for('user_routes.dashboard'))
 
     except Exception as e:
         flash(f'Erro ao tentar atualizar o perfil: {str(e)}', 'error')
         return redirect(url_for('user_routes.dashboard'))
+
+
 
 
 ############################# Navegação entre páginas #############################
