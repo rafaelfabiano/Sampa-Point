@@ -1,14 +1,10 @@
-from flask import Blueprint, current_app, render_template, Flask
+from flask import Blueprint, render_template, Flask
 
-
-user_routes = Blueprint('user_routes', __name__)
 app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run()
-    
-    
-@user_routes.route('/')
+user_routes = Blueprint('user_routes', __name__)
+
+@app.route('/')
 def users():
     return render_template('inicio.html')
 
@@ -16,3 +12,8 @@ def users():
 def cadastro():
     return render_template('cadastro.html')
 
+# Registrar o Blueprint
+app.register_blueprint(user_routes)
+
+if __name__ == "__main__":
+    app.run()
