@@ -1,177 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .e5_10 { 
-            background-color: rgba(255, 255, 255, 1);
-            width: 412px;
-            height: 917px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .e7_26 { 
-            width: 212px;
-            height: 221px;
-            position: absolute;
-            left: 101px;
-            top: 0px;
-            background-image: url(images/06c326d8_1659_490b_8b63_6a4e6064d4cf_1.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .input-container {
-            background-color: rgba(217, 217, 217, 1);
-            width: 371px;
-            height: 39px;
-            position: absolute;
-            left: 20px;
-            border-radius: 22px;
-        }
-        .input-container:nth-of-type(1) { top: 278px; }
-        .input-container:nth-of-type(2) { top: 356px; }
-        .input-container:nth-of-type(3) { top: 433px; }
-        .input-container:nth-of-type(4) { top: 487px; }
-        .input-container:nth-of-type(5) { top: 564px; }
-        .input-container:nth-of-type(6) { top: 641px; }
-        .input-container:nth-of-type(7) { top: 718px; }
-
-        .label {
-            color: rgba(0, 0, 0, 1);
-            text-align: center;
-            font-size: 20px;
-            position: absolute;
-        }
-        .label:nth-of-type(1) { left: 173px; top: 246px; }
-        .label:nth-of-type(2) { left: 173px; top: 332px; }
-        .label:nth-of-type(3) { left: 169px; top: 409px; }
-        .label:nth-of-type(4) { left: 169px; top: 487px; }
-        .label:nth-of-type(5) { left: 175px; top: 564px; }
-        .label:nth-of-type(6) { left: 122px; top: 641px; }
-        .label:nth-of-type(7) { left: 169px; top: 718px; }
-
-        .button {
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 22px;
-            color: rgba(0, 0, 0, 0.2);
-            font-size: 24px;
-            text-align: center;
-            display: inline-block;
-            width: 172px;
-            height: 66px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .e14_4, .e17_156 {
-            background-color: rgba(254, 0, 0, 1);
-        }
-        .e14_6, .e17_158 {
-            background-color: rgba(0, 0, 0, 1);
-        }
-        .button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .footer {
-            text-align: center;
-        }
-        .index {
-            position: absolute;
-            font-size: 14px;
-            color: rgba(0, 0, 0, 0.6);
-        }
-    </style>
-</head>
 <body>
-
-<div class="e5_10">
-    <div class="e7_26"></div>
-    <span class="label">Nome</span>
-    <span class="label">Data de Nascimento</span>
-    <span class="label">E-mail</span>
-    <span class="label">Celular</span>
-    <span class="label">Bairro</span>
-    <span class="label">Cidade/Estado</span>
-
-    <form action="{{ url_for('user_routes.create_user_route') }}" method="POST">
-        <div class="input-container"></div>
-        <input type="text" id="first_name" name="first_name" required placeholder="Digite seu nome" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 246px; left: 20px;">1</span>
-
-        <div class="input-container"></div>
-        <input type="date" id="nascimento" name="nascimento" required style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 332px; left: 20px;">2</span>
-        
-        <div class="input-container"></div>
-        <input type="tel" id="celular" name="celular" required placeholder="(XX) XXXXX-XXXX" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 409px; left: 20px;">3</span>
-        
-        <div class="input-container"></div>
-        <input type="text" id="bairro" name="bairro" required placeholder="Digite seu bairro" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 487px; left: 20px;">4</span>
-        
-        <div class="input-container"></div>
-        <input type="text" id="cidade" name="cidade" required placeholder="Digite sua cidade" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 564px; left: 20px;">5</span>
-        
-        <div class="input-container"></div>
-        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 641px; left: 20px;">6</span>
-        
-        <div class="input-container"></div>
-        <input type="password" id="password" name="password" required placeholder="Digite sua senha" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
-        <span class="index" style="top: 718px; left: 20px;">7</span>
-        
-        <div class="footer">
-            <div class="button e14_4">Cadastrar</div>
-            <div class="button e14_6" onclick="window.history.back();">Voltar</div>
+    <!-- Navbar fixa -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1><a href="{{ url_for('user_routes.dashboard') }}"></a></h1>
         </div>
-    </form>
-</div>
+        <ul class="nav-links">
 
-</body>
-</html>
+        </ul>
+    </nav>
 
-<!DOCTYPE html>
-<html>
+    
 
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
-    <title>Document</title>
-</head>
+        <!-- Conteúdo principal -->
+        <div class="main-container">
+            <h2>Cadastre -se</h2>
 
-<body>
-    <div class="v5_10">
-        <div class="v7_26"></div>
-        <div class="v7_28"></div>
-        <div class="v7_35"></div>
-        <div class="v7_29"></div>
-        <div class="v7_31"></div>
-        <div class="v7_33"></div><span class="v7_37">Nome</span><span class="v7_43">Data de Nascimento</span><span
-            class="v17_2">E-mail</span>
-        <div class="v7_45"></div><span class="v48_52">Senha</span>
-        <div class="v48_53"></div>
-        <div class="v14_4"></div><span class="v14_10">Cadastro</span>
-        <div class="v14_6"></div><span class="v14_8">Cadastrar</span><span class="v14_12">Voltar</span>
-        <div class="v17_156"></div><span class="v17_157">Cadastro</span>
-        <div class="v17_158"></div><span class="v17_159">Cadastrar</span><span class="v17_160">Voltar</span><span
-            class="v7_39">Celular</span><span class="v7_38">Bairro</span><span class="v7_41">Cidade/Estado</span>
+            <!-- Exibir mensagens flash de sucesso ou erro -->
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for category, message in messages %}
+                            <li class="flash-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Formulário de criação de usuário -->
+            <form action="{{ url_for('user_routes.create_user_route') }}" method="POST">
+
+                <label for="first_name">Nome:</label><br>
+                <input type="text" id="first_name" name="first_name" required><br><br>
+
+                <label for="nascimento">Nascimento:</label><br>
+                <input type="text" id="nascimento" name="nascimento" required><br><br>
+                
+                <label for="celular">Celular:</label><br>
+                <input type="text" id="celular" name="celular" required><br><br>
+
+                <label for="bairro">Bairro:</label><br>
+                <input type="text" id="bairro" name="bairro" required><br><br>
+                
+                <label for="cidade">cidade:</label><br>
+                <input type="text" id="cidade" name="cidade" required><br><br>
+
+                <label for="email">E-mail:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Senha:</label><br><br>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Criar Usuário</button>
+            </form>
+        </div>
     </div>
 </body>
-
 </html>
