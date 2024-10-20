@@ -27,15 +27,15 @@
         <!-- Botões de Ação -->
         <div class="buttons-section">
             <a href="{{ url_for('user_routes.perfil', user_id='6714e67a6c464ae3b6ca432d') }}" class="button">Perfil</a>
-            <div class="button">Desafios</div>
+            <a href="{{ url_for('user_routes.desafios') }}" class="button">Desafios</a>
             <a href="{{ url_for('user_routes.get_user', user_id='6714e67a6c464ae3b6ca432d') }}" class="button">Checklist</a>
-            <div class="button">Selos</div>
-            <div class="button">Promoções</div>
+            <a href="{{ url_for('user_routes.selos') }}" class="button">Selos</a>
+            <a href="{{ url_for('user_routes.dashboard') }}" class="button">Promoções</a>
         </div>
 
         <!-- Botão Voltar -->
-        <div class="button-red">
-            Voltar
+        <div class="button-red" onclick="history.back()">Sair</div>
+
         </div>
     </div>
 </body>

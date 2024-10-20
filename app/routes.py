@@ -81,64 +81,64 @@ def create_point_route():
             return redirect(url_for('user_routes.create_point_route'))
 
 ############################# Login #############################
-@user_routes.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'GET':
-        return render_template('login.html')
+# @user_routes.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if request.method == 'GET':
+#         return render_template('login.html')
 
-    elif request.method == 'POST':
-        try:
-            SECRET_KEY = os.getenv('SECRET_KEY_TOKEN')
-            URL_login = os.getenv('URL_login')
-            DOMINIO_COOKIE = os.getenv('DOMINIO_COOKIE')
+#     elif request.method == 'POST':
+#         try:
+#             SECRET_KEY = os.getenv('SECRET_KEY_TOKEN')
+#             URL_login = os.getenv('URL_login')
+#             DOMINIO_COOKIE = os.getenv('DOMINIO_COOKIE')
 
-            email = request.form['email']
-            password = request.form['password']
+#             email = request.form['email']
+#             password = request.form['password']
 
-            # Pegar o endereço IP do usuário
-            ip_address = request.remote_addr
+#             # Pegar o endereço IP do usuário
+#             ip_address = request.remote_addr
 
-            # Verificação de e-mail inválido
-            email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-            if not re.match(email_regex, email):
-                flash('E-mail inválido.', 'error')
-                return render_template('login.html')
+#             # Verificação de e-mail inválido
+#             email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+#             if not re.match(email_regex, email):
+#                 flash('E-mail inválido.', 'error')
+#                 return render_template('login.html')
 
-            # Utilizando função do CRUD para buscar o usuário
-            user = get_user_by_email(email)
-            if not user:
-                flash('Usuário não cadastrado.', 'error')
-                return render_template('login.html')
+#             # Utilizando função do CRUD para buscar o usuário
+#             user = get_user_by_email(email)
+#             if not user:
+#                 flash('Usuário não cadastrado.', 'error')
+#                 return render_template('login.html')
 
-            # Verificar se a senha está correta
-            if password == user['password_hash']:
-                token = jwt.encode({
-                    'user_id': str(user['_id']),
-                    'exp': datetime.now(timezone.utc) + timedelta(hours=20)
-                }, SECRET_KEY, algorithm='HS256')
+#             # Verificar se a senha está correta
+#             if password == user['password_hash']:
+#                 token = jwt.encode({
+#                     'user_id': str(user['_id']),
+#                     'exp': datetime.now(timezone.utc) + timedelta(hours=20)
+#                 }, SECRET_KEY, algorithm='HS256')
 
-                # Atualiza o token de login no banco de dados
-                update_user(user['_id'], {'login_token': token})
+#                 # Atualiza o token de login no banco de dados
+#                 update_user(user['_id'], {'login_token': token})
 
-                # Registra a tentativa de login bem-sucedida
-                log_login_attempt(user['_id'], "success", ip_address)
+#                 # Registra a tentativa de login bem-sucedida
+#                 log_login_attempt(user['_id'], "success", ip_address)
 
-                # Cria a resposta e define o token no cookie
-                response = redirect(url_for('user_routes.dashboard'))
-                response.set_cookie('token', token, max_age=60*60*20, httponly=True,
-                                    secure=False, samesite='Lax', domain=DOMINIO_COOKIE, path='/')
-                return response
-            else:
-                # Registra a tentativa de login com falha
-                log_login_attempt(user['_id'], "failure", ip_address)
+#                 # Cria a resposta e define o token no cookie
+#                 response = redirect(url_for('user_routes.dashboard'))
+#                 response.set_cookie('token', token, max_age=60*60*20, httponly=True,
+#                                     secure=False, samesite='Lax', domain=DOMINIO_COOKIE, path='/')
+#                 return response
+#             else:
+#                 # Registra a tentativa de login com falha
+#                 log_login_attempt(user['_id'], "failure", ip_address)
 
-                #Retorna mensagem de login com falha
-                flash('Credenciais inválidas.', 'error')
-                return render_template('login.html')
-        except Exception as e:
-            print(f"Erro no login: {e}")
-            flash('Erro ao tentar fazer login. Tente novamente mais tarde.', 'error')
-            return render_template('login.html')
+#                 #Retorna mensagem de login com falha
+#                 flash('Credenciais inválidas.', 'error')
+#                 return render_template('login.html')
+#         except Exception as e:
+#             print(f"Erro no login: {e}")
+#             flash('Erro ao tentar fazer login. Tente novamente mais tarde.', 'error')
+#             return render_template('login.html')
 
 
 @user_routes.route('/edit_profile', methods=['GET', 'POST'])
@@ -381,12 +381,6 @@ def update_user_qr(user_id, point_id):
 
 ############################# Navegação entre páginas #############################
 
-@user_routes.route("/logout")
-def logout():
-    response = redirect(url_for("user_routes.login"))
-    response.set_cookie('token', '', expires=0)
-    flash("Você foi desconectado.", "info")
-    return response
 
 @user_routes.route("/dashboard")
 def dashboard():
@@ -399,6 +393,14 @@ def selos():
 @user_routes.route("/sucesso")
 def sucesso():
     return render_template("sucesso.html",)
+
+@user_routes.route("/desafios")
+def desafios():
+    return render_template("desafios.html",)
+
+@user_routes.route("/login")
+def login():
+    return render_template("login.html",)
 
 @user_routes.route("/link_create_user")
 def link_create_user():
