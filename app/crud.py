@@ -27,7 +27,7 @@ def create_user(email, password, first_name, nascimento, celular, bairro, cidade
         "celular": celular,
         "bairro": bairro,
         "cidade": cidade,
-        "selos": [],
+        "selos": 0,
         "checklist": [],
         "preferencias": {
             "cultural": 0,

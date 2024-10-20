@@ -245,6 +245,7 @@ def perfil(user_id):
         return redirect(url_for('user_routes.list_users'))
 
 
+
 @user_routes.route('/edit_user/<user_id>', methods=['GET', 'POST'])
 def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
     try:
@@ -287,7 +288,6 @@ def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
 
             flash('Perfil atualizado com sucesso!', 'success')
             return redirect(url_for('user_routes.list_users'))
-
     except Exception as e:
         flash(f'Erro ao tentar atualizar o perfil: {str(e)}', 'error')
         return redirect(url_for('user_routes.list_users'))
@@ -299,7 +299,6 @@ def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
 @user_routes.route('/update_user_qr/<user_id>/<point_id>', methods=['GET'])
 def update_user_qr(user_id, point_id):
     try:
-        # Utilizando função do CRUD para buscar o usuário e o ponto
         user = get_user_by_id(user_id)
         point = get_point_by_id(point_id)
 
@@ -311,7 +310,6 @@ def update_user_qr(user_id, point_id):
             flash('Ponto não encontrado.', 'error')
             return redirect(url_for('user_routes.login'))
 
-        # Obtém os dados da query string
         password = request.args.get('password', None)
         first_name = request.args.get('first_name')
         nascimento = request.args.get('nascimento')
@@ -319,7 +317,6 @@ def update_user_qr(user_id, point_id):
         bairro = request.args.get('bairro')
         cidade = request.args.get('cidade')
 
-        # Carrega as preferências existentes do usuário
         preferencias = user.get('preferencias', {
             "cultural": 0,
             "gastronomico": 0,
@@ -331,32 +328,31 @@ def update_user_qr(user_id, point_id):
             "historico": 0
         })
 
-        # Verifica se 'point' e 'categoria' estão definidos
         categoria = point.get('categoria')
         if categoria in preferencias:
             preferencias[categoria] += 1
             print(f"Preferências atualizadas: {preferencias}")
 
-        # Obter o checklist atual
         checklist_atual = user.get('checklist', [])
 
-        # Verificar se point_id já está no checklist
         if point_id not in checklist_atual:
             checklist_atual.append(point_id)
 
-        # Atualizar os campos, mantendo os que não devem ser alterados
+        # Mantendo o valor de selos inalterado
+        selos_atual = user.get('selos', 0)
+
+        # Atualizando os campos, mas sem alterar o valor de selos
         update_fields = {
             "first_name": first_name if first_name else user.get('first_name'),
             "data_nascimento": nascimento if nascimento else user.get('data_nascimento'),
             "celular": celular if celular else user.get('celular'),
             "bairro": bairro if bairro else user.get('bairro'),
             "cidade": cidade if cidade else user.get('cidade'),
-            "selos": [],  # Preservar conforme necessário
+            "selos": selos_atual,  # Manter o valor atual de selos
             "checklist": checklist_atual,
             "preferencias": preferencias
         }
 
-        # Somente atualizar a senha se fornecida
         if password:
             update_fields["password_hash"] = password
 
@@ -370,9 +366,7 @@ def update_user_qr(user_id, point_id):
         flash(f'Erro ao tentar atualizar o perfil: {str(e)}', 'error')
         return redirect(url_for('user_routes.dashboard'))
 
-
-
-
+    
 
 ############################# Navegação entre páginas #############################
 
@@ -386,6 +380,10 @@ def logout():
 @user_routes.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html",)
+
+@user_routes.route("/selos")
+def selos():
+    return render_template("selos.html",)
 
 @user_routes.route("/link_create_user")
 def link_create_user():
