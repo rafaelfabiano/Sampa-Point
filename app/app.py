@@ -34,7 +34,7 @@ app.register_blueprint(user_routes)
 # Criando rota para a página inicial
 @app.route('/')
 def index():
-        return redirect(url_for('login'))
+    return render_template('inicio.html') 
 
 @app.route('/login')
 def login():
