@@ -1,0 +1,79 @@
+.e5_10 { 
+    background-color: rgba(255, 255, 255, 1);
+    width: 412px;
+    height: 917px;
+    position: absolute;
+    overflow: hidden;
+}
+
+.Rectangle {
+    width: 100%;
+    height: 10px; /* Ajuste conforme necessário */
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 20px 0 5px;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: rgba(217, 217, 217, 1);
+    width: 371px;
+    height: 39px;
+    border: none;
+    border-radius: 22px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: rgba(254, 0, 0, 1);
+    color: rgba(0, 0, 0, 0.2);
+    width: 172px;
+    height: 66px;
+    border: none;
+    border-radius: 22px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    margin: 20px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(254, 0, 0, 0.8);
+}
+
+.button-container {
+    text-align: center;
+}
+
+.e7_37, .e7_43, .e17_2, .e7_39, .e7_38, .e7_41 {
+    color: rgba(0, 0, 0, 1);
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.e48_52, .e48_53 {
+    color: rgba(0, 0, 0, 1);
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.e14_10, .e14_8, .e14_12 {
+    color: rgba(0, 0, 0, 0.2);
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    text-align: center;
+}

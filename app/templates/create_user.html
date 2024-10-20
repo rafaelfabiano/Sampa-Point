@@ -3,126 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
-        .Cadastro {
+        .e5_10 { 
+            background-color: rgba(255, 255, 255, 1);
             width: 412px;
-            height: auto; /* Ajusta a altura automaticamente */
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            height: 917px;
             position: relative;
-            padding: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .Rectangle {
+        .e7_26 { 
+            width: 212px;
+            height: 221px;
+            position: absolute;
+            left: 101px;
+            top: 0px;
+            background-image: url(images/06c326d8_1659_490b_8b63_6a4e6064d4cf_1.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .e7_28, .e7_35, .e7_29, .e7_31, .e7_33, .e7_45, .e48_53 {
+            background-color: rgba(217, 217, 217, 1);
             width: 371px;
             height: 39px;
-            background: #D9D9D9;
+            position: absolute;
+            left: 20px;
             border-radius: 22px;
-            margin: 10px 0;
         }
-        label {
+        .e7_28 { top: 278px; }
+        .e7_29 { top: 511px; }
+        .e7_31 { top: 433px; }
+        .e7_33 { top: 356px; }
+        .e7_35 { top: 588px; }
+        .e7_45 { top: 665px; }
+        .e7_37, .e7_43, .e17_2, .e48_52, .e7_39, .e7_38, .e7_41 {
+            color: rgba(0, 0, 0, 1);
+            text-align: center;
             font-size: 20px;
-            color: black;
+            position: absolute;
         }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px 0;
-            border: 1px solid #D9D9D9;
-            border-radius: 22px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #FE0000;
-            color: white;
-            border: none;
-            border-radius: 22px;
-            font-size: 20px;
-            cursor: pointer;
+        .e7_37 { left: 173px; top: 246px; }
+        .e7_43 { left: 93px; top: 332px; }
+        .e17_2 { left: 169px; top: 409px; }
+        .e48_52 { left: 169px; top: 718px; }
+        .e7_39 { left: 169px; top: 487px; }
+        .e7_38 { left: 175px; top: 564px; }
+        .e7_41 { left: 122px; top: 641px; }
+
+        .button {
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #d60000;
-        }
-        .flash-messages {
-            list-style: none;
-            padding: 0;
+            border-radius: 22px;
+            color: rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            text-align: center;
+            display: inline-block;
+            width: 172px;
+            height: 66px;
             margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .flash-success {
-            color: green;
+        .e14_4, .e17_156 {
+            background-color: rgba(254, 0, 0, 1);
         }
-        .flash-error {
-            color: red;
+        .e14_6, .e17_158 {
+            background-color: rgba(0, 0, 0, 1);
+        }
+        .e14_10, .e17_157, .e14_8, .e17_159, .e14_12, .e17_160 {
+            color: rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .footer {
+            text-align: center;
+        }
+        .index {
+            position: absolute;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
 <body>
-    <!-- Navbar fixa -->
-    <nav class="navbar">
-        <div class="logo">
-            <h1><a href="{{ url_for('user_routes.dashboard') }}">Logo</a></h1>
+
+<div class="e5_10">
+    <div class="e7_26"></div>
+    <span class="e7_37">Nome</span>
+    <span class="e7_43">Data de Nascimento</span>
+    <span class="e17_2">E-mail</span>
+    <span class="e7_39">Celular</span>
+    <span class="e7_38">Bairro</span>
+    <span class="e7_41">Cidade/Estado</span>
+
+    <form action="{{ url_for('user_routes.create_user_route') }}" method="POST">
+        <div class="e7_28"></div>
+        <input type="text" id="first_name" name="first_name" required placeholder="Digite seu nome" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 246px; left: 20px;">1</span>
+
+        <div class="e7_29"></div>
+        <input type="date" id="nascimento" name="nascimento" required style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 332px; left: 20px;">2</span>
+        
+        <div class="e7_31"></div>
+        <input type="tel" id="celular" name="celular" required placeholder="(XX) XXXXX-XXXX" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 409px; left: 20px;">3</span>
+        
+        <div class="e7_33"></div>
+        <input type="text" id="bairro" name="bairro" required placeholder="Digite seu bairro" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 487px; left: 20px;">4</span>
+        
+        <div class="e7_35"></div>
+        <input type="text" id="cidade" name="cidade" required placeholder="Digite sua cidade" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 564px; left: 20px;">5</span>
+        
+        <div class="e7_45"></div>
+        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 641px; left: 20px;">6</span>
+        
+        <div class="e48_53"></div>
+        <input type="password" id="password" name="password" required placeholder="Digite sua senha" style="margin: 20px 20px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: calc(100% - 40px);">
+        <span class="index" style="top: 718px; left: 20px;">7</span>
+        
+        <div class="footer">
+            <div class="button e14_4">Cadastrar</div>
+            <div class="button e14_6" onclick="window.history.back();">Voltar</div>
         </div>
-        <ul class="nav-links">
-            <!-- Links da Navbar -->
-        </ul>
-    </nav>
+    </form>
+</div>
 
-    <!-- Conteúdo principal -->
-    <div class="main-container">
-        <div class="Cadastro">
-            <h2 style="text-align: center;">Cadastre-se</h2>
-
-            <!-- Exibir mensagens flash de sucesso ou erro -->
-            {% with messages = get_flashed_messages(with_categories=True) %}
-                {% if messages %}
-                    <ul class="flash-messages">
-                        {% for category, message in messages %}
-                            <li class="flash-{{ category }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-
-            <!-- Formulário de criação de usuário -->
-            <form action="{{ url_for('user_routes.create_user_route') }}" method="POST">
-                <div class="Rectangle"></div>
-                <label for="first_name">Nome:</label>
-                <input type="text" id="first_name" name="first_name" required>
-
-                <label for="nascimento">Data de Nascimento:</label>
-                <input type="text" id="nascimento" name="nascimento" required>
-                
-                <label for="celular">Celular:</label>
-                <input type="text" id="celular" name="celular" required>
-
-                <label for="bairro">Bairro:</label>
-                <input type="text" id="bairro" name="bairro" required>
-                
-                <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" required>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-    </div>
 </body>
 </html>
