@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro de Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/erro_login.css') }}">
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-card">
+            <h2>Algo deu errado</h2>
+            <p>{{ error_message }}</p>
+            <!-- O botão agora usa a URL fornecida pela variável de ambiente -->
+            <a href="https://deltaprojetos.com.br" class="btn">Fazer login</a>
+        </div>
+    </div>
+</body>
+</html>

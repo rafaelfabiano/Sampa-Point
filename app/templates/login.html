@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sampa Point</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Acessar a Plataforma</h2>
+            <form action="{{ url_for('user_routes.login') }}" method="POST">
+                <!-- Campo de e-mail -->
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <!-- Campo de senha -->
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <!-- Botão de envio -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+
+            <!-- Botão para criar nova conta -->
+            <div class="form-group">
+                <a href="{{ url_for('user_routes.create_user_route') }}" class="btn btn-secondary">Criar Nova Conta</a>
+            </div>
+
+            <!-- Mensagens flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+
+</html>

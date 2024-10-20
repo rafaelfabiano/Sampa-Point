@@ -1,0 +1,1 @@
+MONGO_URI='mongodb://mongo:4e41495009b335692daf@85.31.231.38:27017'
