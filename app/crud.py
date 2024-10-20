@@ -89,12 +89,15 @@ def get_user_by_email(email):
 
 
 def get_user_by_id(user_id):
-    # Retorna o usuário pelo ID
-    return db.users.find_one({"_id": ObjectId(user_id)})
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    return user
+
 
 def get_point_by_id(point_id):
     # Retorna o point pelo ID
-    return db.points.find_one({"_id": ObjectId(point_id)})
+    point = db.points.find_one({"_id": ObjectId(point_id)})
+    print(f"Point encontrado: {point}")  # Log do ponto encontrado
+    return point
 
 def update_user(user_id, update_fields):
     # Atualizando o usuário no banco de dados
@@ -108,3 +111,7 @@ def delete_user(user_id):
 def get_all_users():
     users = db.users.find() 
     return list(users)
+
+def get_all_points():
+    points = db.points.find() 
+    return list(points)

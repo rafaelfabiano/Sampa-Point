@@ -9,59 +9,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar fixa -->
     <nav class="navbar">
         <div class="logo">
             <h1><a href="{{ url_for('user_routes.dashboard') }}">Sampa Point</a></h1>
         </div>
     </nav>
 
-
-
-        <!-- Conteúdo principal -->
-        <div class="main-container">
-            <!-- Exibir mensagens flash -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            <div class="flash-messages">
-                <ul>
-                    {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
-            {% endwith %}
-            <h2>Lista de Usuários</h2>
-            
-            <!-- Tabela de usuários -->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Nome Completo</th>
-                        <th>Setor</th>
-                        <th>Nivel</th>
-                        <th>Editar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user in users %}
-                    <tr>
-                        <td>{{ user._id }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.profile.first_name }} {{ user.profile.last_name }}</td>
-                        <td>{{ user.setor }}</td>
-                        <td>{{ user.nivel }}</td>
-                        <td class="editar">
-                            <a href="{{ url_for('user_routes.edit_user', user_id=user._id|string) }}">Editar</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="main-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            <ul>
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
         </div>
+        {% endif %}
+        {% endwith %}
+        <h2>Lista de Usuários</h2>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Nome Completo</th>
+                    <th>Data de Nascimento</th>
+                    <th>Celular</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Selos</th>
+                    <th>Checklist</th>
+                    <th>Preferências</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.data_nascimento }}</td>
+                    <td>{{ user.celular }}</td>
+                    <td>{{ user.bairro }}</td>
+                    <td>{{ user.cidade }}</td>
+                    <td>{{ user.selos | join(', ') }}</td>
+                    <td>{{ user.checklist | join(', ') }}</td>
+                    <td>
+                        {% for key, value in user.preferencias.items() %}
+                            {{ key }}: {{ value }}<br>
+                        {% endfor %}
+                    </td>
+                    <td class="editar">
+                        <a href="{{ url_for('user_routes.edit_user', user_id=user._id|string) }}">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
     </div>
 </body>
 </html>

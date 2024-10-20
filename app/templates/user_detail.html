@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Usuário</title>
+</head>
+
+<body>
+    <h1>Detalhes do Usuário</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>Nome Completo: {{ user.first_name }}</p>
+    <p>Data de Nascimento: {{ user.data_nascimento }}</p>
+    <p>Celular: {{ user.celular }}</p>
+    <p>Bairro: {{ user.bairro }}</p>
+    <p>Cidade: {{ user.cidade }}</p>
+    <p>Selos: {{ user.selos | join(', ') }}</p>
+
+    <h3>Checklist de Pontos:</h3>
+    <ul>
+        {% for point in points %}
+        <li>Nome: {{ point.nome }} - Endereço: {{ point.endereco }}</li>
+        {% else %}
+        <li>Nenhum ponto encontrado no checklist.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Preferências:</h3>
+    <ul>
+        {% for key, value in user.preferencias.items() %}
+        <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('user_routes.list_users') }}">Voltar para a lista de usuários</a>
+</body>
+
+</html>

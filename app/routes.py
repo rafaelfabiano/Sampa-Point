@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 import os
 from dotenv import load_dotenv
 from auth_decorator import login_required, setor_required
-from crud import create_point, create_user, get_point_by_id, get_user_by_email, get_user_by_id, update_user, log_login_attempt, get_all_users
+from crud import create_point, create_user, get_all_points, get_point_by_id, get_user_by_email, get_user_by_id, update_user, log_login_attempt, get_all_users
 import bcrypt
 import re
 
@@ -207,6 +207,38 @@ def list_users():  # Adiciona o parâmetro current_user
         flash(f'Erro ao carregar a lista de usuários: {str(e)}', 'error')
         return redirect(url_for('user_routes.dashboard'))
 
+@user_routes.route('/list_points', methods=['GET'])
+def list_points():  # Adiciona o parâmetro current_user
+    try:
+        points = get_all_points()  # Obtém todos os usuários do banco
+        return render_template('list_points.html', points=points)  # Renderiza a lista
+    except Exception as e:
+        flash(f'Erro ao carregar a lista de points: {str(e)}', 'error')
+        return redirect(url_for('user_routes.dashboard'))
+
+@user_routes.route('/user/<user_id>', methods=['GET'])
+def get_user(user_id):
+    try:
+        user = get_user_by_id(user_id)  # Ajuste para um único usuário
+        if not user:
+            flash('Usuário não encontrado.', 'error')
+            return redirect(url_for('user_routes.list_users'))
+
+        # Obter a lista de IDs de pontos do checklist do usuário
+        checklist_ids = user.get('checklist', [])
+
+        # Consultar os pontos correspondentes aos IDs
+        points = []
+        for point_id in checklist_ids:
+            point = get_point_by_id(point_id)  # Função que busca o ponto pelo ID
+            if point:
+                points.append(point)
+
+        # Retornar o template com os detalhes do usuário e a lista de pontos
+        return render_template('user_detail.html', user=user, points=points)
+    except Exception as e:
+        flash(f'Erro ao carregar o usuário: {str(e)}', 'error')
+        return redirect(url_for('user_routes.list_users'))
 
 
 @user_routes.route('/edit_user/<user_id>', methods=['GET', 'POST'])
@@ -233,7 +265,7 @@ def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
                 existing_user = get_user_by_email(email)
                 if existing_user and existing_user['_id'] != user['_id']:
                     flash('Este e-mail já está cadastrado.', 'error')
-                    return redirect(url_for('user_routes.edit_user', user=user, current_user=current_user))
+                    return redirect(url_for('user_routes.edit_user', user=user))
 
             update_fields = {
                 "email": email,
@@ -256,7 +288,10 @@ def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
         flash(f'Erro ao tentar atualizar o perfil: {str(e)}', 'error')
         return redirect(url_for('user_routes.list_users'))
 
-
+#atualiza o perfill do usuario com dados por urls
+#necessario passar o id do usuario e o id do ponto
+#se o ponto ja estiver no checklist, nao adiciona novamente
+#atualiza as preferencias do usuario +1 sem limites
 @user_routes.route('/update_user_qr/<user_id>/<point_id>', methods=['GET'])
 def update_user_qr(user_id, point_id):
     try:
@@ -305,27 +340,32 @@ def update_user_qr(user_id, point_id):
         if point_id not in checklist_atual:
             checklist_atual.append(point_id)
 
-        # Atualizar os campos
+        # Atualizar os campos, mantendo os que não devem ser alterados
         update_fields = {
-            "password_hash": password,
-            "first_name": first_name,
-            "data_nascimento": nascimento,
-            "celular": celular,
-            "bairro": bairro,
-            "cidade": cidade,
-            "selos": [],
+            "first_name": first_name if first_name else user.get('first_name'),
+            "data_nascimento": nascimento if nascimento else user.get('data_nascimento'),
+            "celular": celular if celular else user.get('celular'),
+            "bairro": bairro if bairro else user.get('bairro'),
+            "cidade": cidade if cidade else user.get('cidade'),
+            "selos": [],  # Preservar conforme necessário
             "checklist": checklist_atual,
             "preferencias": preferencias
         }
+
+        # Somente atualizar a senha se fornecida
+        if password:
+            update_fields["password_hash"] = password
+
         print(f"Campos atualizados: {update_fields}")
         update_user(user['_id'], update_fields)
 
         flash('Usuário atualizado com sucesso!', 'success')
-        return redirect(url_for('user_routes.dashboard'))
+        return redirect(url_for('user_routes.get_user', user_id=user_id))
 
     except Exception as e:
         flash(f'Erro ao tentar atualizar o perfil: {str(e)}', 'error')
         return redirect(url_for('user_routes.dashboard'))
+
 
 
 
