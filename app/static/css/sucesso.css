@@ -1,0 +1,43 @@
+/* Reset básico */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.button-star {
+    display: inline-block; /* Para permitir padding */
+    padding: 10px; /* Adiciona espaço ao redor da imagem */
+    border: none; /* Remove bordas padrão */
+    background-color: transparent; /* Fundo transparente */
+    cursor: pointer; /* Muda o cursor para pointer */
+}
+
+.success-image {
+    width: 100%; /* Ajusta a largura para 100% do contêiner */
+    max-width: 200px; /* Define uma largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .success-image {
+        max-width: 150px; /* Ajusta a largura máxima em telas pequenas */
+    }
+}

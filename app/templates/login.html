@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="../static/css/login.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <label for="username" class="label">Usuário</label>
+            <input type="text" id="username" name="username" class="input-field" value="joao@silva.com" required>
+        </div>
+        <div class="input-container">
+            <label for="password" class="label">Senha</label>
+            <input type="password" id="password" name="password" class="input-field" value="sua_senha" required>
+        </div>
+        <div class="image"></div>
+        <div class="button-container">
+            <a href="{{ url_for('user_routes.dashboard') }}" class="button">Logar</a>
+        </div>
+    </div>
+</body>
+
+</html>

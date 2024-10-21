@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+</head>
+
+<body>
+
+    <!-- Navbar fixa -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1><a href="{{ url_for('user_routes.dashboard') }}">Sampa Point</a></h1>
+        </div>
+        <ul class="nav-links">
+        </ul>
+    </nav>
+
+    <!-- Container principal com barra lateral -->
+    <div class="main-layout">
+
+        <div class="edit-profile-container">
+            <h2>Editar Perfil</h2>
+            <!-- Exibir mensagens flash -->
+            <div class="flash-messages">
+                <ul>
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <form action="{{ url_for('user_routes.edit_profile') }}" method="POST">
+                <!-- Campos de nome e sobrenome -->
+                <div class="form-group">
+                    <label for="first_name">Nome:</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ user['profile']['first_name'] }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Sobrenome:</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ user['profile']['last_name'] }}" required>
+                </div>
+
+                <!-- Campo de e-mail -->
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+                </div>
+
+                <!-- Campo de senha (opcional) -->
+                <div class="form-group">
+                    <label for="password">Senha (deixe em branco para manter a mesma senha):</label>
+                    <input type="password" id="password" name="password">
+                </div>
+
+                <!-- Botão de submissão -->
+                <div class="form-group">
+                    <button type="submit">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>
