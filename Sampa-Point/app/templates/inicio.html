@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/inicio.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="InCio">
+        <img class="C326d81659490b8b636a4e6064d4cf1" src="../static/image/v7_19.png"
+            alt="Imagem de exemplo" />
+        <div class="SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida">
+            <h1>Saia da rotina!<br /></h1>
+            <div class="Line1"></div>
+            <span>Venha explorar São Paulo de uma forma divertida.</span>
+        </div>
+        <a href="{{ url_for('user_routes.login') }}" class="Rectangle3">Login</a>
+        <a href="{{ url_for('user_routes.create_user_route') }}" class="Rectangle4">Cadastro</a>
+    </div>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Evita scroll */
+        }
+
+        .InCio {
+            width: 100%;
+            max-width: 412px;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .Rectangle3,
+        .Rectangle4 {
+            width: 100%;
+            height: 66px;
+            margin: 10px 0;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-family: Montserrat;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            color: white;
+        }
+
+        .Rectangle3 {
+            background: #FE0000;
+        }
+
+        .Rectangle4 {
+            background: black;
+        }
+
+        .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .Line1 {
+            width: 90%;
+            height: 3px;
+            background: #FE0000;
+            margin: 20px auto;
+        }
+
+        @media (max-width: 768px) {
+            .Rectangle3,
+            .Rectangle4 {
+                font-size: 20px;
+                height: 50px;
+            }
+
+            .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Rectangle3,
+            .Rectangle4 {
+                font-size: 18px;
+                height: 45px;
+            }
+
+            .SaiaDaRotinaVenhaExplorarSOPauloDeUmaFormaDivertida span {
+                font-size: 16px;
+            }
+        }
+    </style>
+</body>
+
+</html>

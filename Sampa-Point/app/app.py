@@ -2,7 +2,6 @@ from flask import Flask, redirect, render_template, request, url_for  # Adiciona
 from pymongo import MongoClient
 import os
 import sys
-import database.url
 from dotenv import load_dotenv
 load_dotenv()
 import jwt  # Biblioteca para JWT
@@ -22,7 +21,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'default_secret_key') 
 
 # Conectando ao MongoDB
-client = MongoClient(database.url.MONGO_URI)
+client = MongoClient(os.getenv('MONGO_URI'))
 db = client.login
 
 # Importando o Blueprint para as rotas de usuários

@@ -256,6 +256,7 @@ def perfil(user_id):
         return redirect(url_for('user_routes.list_users'))
 
 
+
 @user_routes.route('/edit_user/<user_id>', methods=['GET', 'POST'])
 def edit_user( user_id):  # Adiciona current_user como primeiro parâmetro
     try:

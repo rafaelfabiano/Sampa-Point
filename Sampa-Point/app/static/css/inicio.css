@@ -1,0 +1,106 @@
+
+.e5_8 { 
+	background-color:rgba(255, 255, 255, 1);
+	width:412px;
+	height:917px;
+	position:absolute;
+	overflow:hidden;
+}
+.e7_19 { 
+	width:419px;
+	height:535px;
+	position:absolute;
+	left:-4px;
+	top:-67px;
+	background-image:url(../image/v7_19.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e7_21 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(254.00000005960464, 0, 0, 1);
+	width:333px;
+	height:66px;
+	position:absolute;
+	left:51px;
+	top:701px;
+	border-top-left-radius:22px;
+	border-top-right-radius:22px;
+	border-bottom-left-radius:22px;
+	border-bottom-right-radius:22px;
+}
+.e7_24 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(0, 0, 0, 1);
+	width:333px;
+	height:66px;
+	position:absolute;
+	left:51px;
+	top:800px;
+	border-top-left-radius:22px;
+	border-top-right-radius:22px;
+	border-bottom-left-radius:22px;
+	border-bottom-right-radius:22px;
+}
+.e17_8 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(0, 0, 0, 1);
+	width:333px;
+	height:66px;
+	position:absolute;
+	left:50px;
+	top:800px;
+	border-top-left-radius:22px;
+	border-top-right-radius:22px;
+	border-bottom-left-radius:22px;
+	border-bottom-right-radius:22px;
+}
+.e14_2 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	color:rgba(0, 0, 0, 0.20000000298023224);
+	width:114px;
+	height:49px;
+	position:absolute;
+	left:161px;
+	top:710px;
+	font-family:Montserrat;
+	text-align:center;
+	font-size:40px;
+	letter-spacing:0;
+}
+.e14_3 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	color:rgba(0, 0, 0, 0.20000000298023224);
+	width:180px;
+	height:49px;
+	position:absolute;
+	left:128px;
+	top:809px;
+	font-family:Montserrat;
+	text-align:center;
+	font-size:40px;
+	letter-spacing:0;
+}
+.e54_39 { 
+	color:rgba(0, 0, 0, 1);
+	width:374px;
+	height:224px;
+	position:absolute;
+	left:19px;
+	top:416px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:16px;
+	letter-spacing:0;
+}
+
+.f58_33 { 
+	border:3px solid rgba(254.00000005960464, 0, 0, 1);
+}
+.e58_33 { 
+	width:230px;
+	height:0px;
+	position:absolute;
+	left:91px;
+	top:508.5px;
+}
