@@ -11,6 +11,10 @@ Este projeto foi desenvolvido durante o Hackathon Visite SP, com o objetivo de i
 - **Emblemas**: Os selos coletados se transformam em emblemas que podem ser trocados por descontos em estabelecimentos parceiros.
 - **Notificações Futuras**: O sistema irá gerar notificações com sugestões de lugares para visitar e atividades a realizar, além de utilizar informações de outras aplicações existentes para sugerir roteiros e redirecionar o usuário para essas plataformas para mais informações.
 
+## Imagens da Aplicação
+![Front](app/static/image/visual/todos_fronts.png)
+
+
 ## Criadores
 
 - [Adriana Santos](https://www.linkedin.com/in/adrianasantos86/)
